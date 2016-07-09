@@ -32,15 +32,15 @@ def get_drum_val(cs):
     GPIO.output(CLK, True)
     GPIO.output(cs, False)
     binData = 0
-    i1 = 14
+    i = 14
 
-    while (i1 >= 0):
+    while (i >= 0):
         GPIO.output(CLK, False)
         bitDOUT = GPIO.input(DOUT)
         GPIO.output(CLK, True)
-        bitDOUT = bitDOUT << i1
+        bitDOUT = bitDOUT << i
         binData |= bitDOUT
-        i1 -= 1
+        i -= 1
 
     GPIO.output(cs, True)
     binData &= 0xFFF
